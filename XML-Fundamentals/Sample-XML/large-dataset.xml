@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Large dataset example for testing XML parsing performance -->
+<employee-database xmlns="http://example.com/hr"
+                  xmlns:contact="http://example.com/contact"
+                  xmlns:payroll="http://example.com/payroll"
+                  generated="2024-01-15T09:00:00Z"
+                  total-records="1000">
+    
+    <metadata>
+        <generator>HR System v2.5</generator>
+        <export-date>2024-01-15T09:00:00Z</export-date>
+        <department-count>8</department-count>
+        <active-employees>950</active-employees>
+        <inactive-employees>50</inactive-employees>
+    </metadata>
+    
+    <departments>
+        <department id="IT" name="Information Technology" budget="2500000"/>
+        <department id="HR" name="Human Resources" budget="800000"/>
+        <department id="FIN" name="Finance" budget="1200000"/>
+        <department id="MKT" name="Marketing" budget="1800000"/>
+        <department id="OPS" name="Operations" budget="3000000"/>
+        <department id="RND" name="Research & Development" budget="4000000"/>
+        <department id="SUP" name="Support" budget="600000"/>
+        <department id="LEG" name="Legal" budget="400000"/>
+    </departments>
+    
+    <employees>
+        <!-- Sample of first 20 employees - in real scenario would have 1000+ -->
+        <employee id="EMP001" status="active" hire-date="2020-03-15">
+            <personal-info>
+                <first-name>John</first-name>
+                <last-name>Smith</last-name>
+                <date-of-birth>1985-07-22</date-of-birth>
+                <gender>M</gender>
+                <ssn encrypted="true">XXX-XX-1234</ssn>
+            </personal-info>
+            <contact:contact-info>
+                <contact:email primary="true">john.smith@company.com</contact:email>
+                <contact:phone type="mobile">+1-555-0101</contact:phone>
+                <contact:phone type="work">+1-555-0102</contact:phone>
+                <contact:address type="home">
+                    <contact:street>123 Main St</contact:street>
+                    <contact:city>San Francisco</contact:city>
+                    <contact:state>CA</contact:state>
+                    <contact:zip>94102</contact:zip>
+                    <contact:country>USA</contact:country>
+                </contact:address>
+            </contact:contact-info>
+            <job-info>
+                <department-id>IT</department-id>
+                <title>Senior Software Engineer</title>
+                <level>L5</level>
+                <manager-id>EMP015</manager-id>
+                <location>San Francisco, CA</location>
+                <work-type>Full-time</work-type>
+                <remote-eligible>true</remote-eligible>
+            </job-info>
+            <payroll:compensation>
+                <payroll:base-salary currency="USD">120000</payroll:base-salary>
+                <payroll:bonus-eligible>true</payroll:bonus-eligible>
+                <payroll:stock-options>5000</payroll:stock-options>
+                <payroll:benefits>
+                    <payroll:health-insurance>Premium</payroll:health-insurance>
+                    <payroll:dental>Standard</payroll:dental>
+                    <payroll:vision>Standard</payroll:vision>
+                    <payroll:retirement-plan>401k</payroll:retirement-plan>
+                </payroll:benefits>
+            </payroll:compensation>
+            <performance>
+                <last-review-date>2023-12-15</last-review-date>
+                <rating>Exceeds Expectations</rating>
+                <goals-met>4</goals-met>
+                <goals-total>5</goals-total>
+            </performance>
+        </employee>
+        
+        <employee id="EMP002" status="active" hire-date="2019-11-20">
+            <personal-info>
+                <first-name>Sarah</first-name>
+                <last-name>Johnson</last-name>
+                <date-of-birth>1988-03-10</date-of-birth>
+                <gender>F</gender>
+                <ssn encrypted="true">XXX-XX-5678</ssn>
+            </personal-info>
+            <contact:contact-info>
+                <contact:email primary="true">sarah.johnson@company.com</contact:email>
+                <contact:phone type="mobile">+1-555-0201</contact:phone>
+                <contact:address type="home">
+                    <contact:street>456 Oak Avenue</contact:street>
+                    <contact:city>Palo Alto</contact:city>
+                    <contact:state>CA</contact:state>
+                    <contact:zip>94301</contact:zip>
+                    <contact:country>USA</contact:country>
+                </contact:address>
+            </contact:contact-info>
+            <job-info>
+                <department-id>MKT</department-id>
+                <title>Marketing Manager</title>
+                <level>L4</level>
+                <manager-id>EMP020</manager-id>
+                <location>San Francisco, CA</location>
+                <work-type>Full-time</work-type>
+                <remote-eligible>true</remote-eligible>
+            </job-info>
+            <payroll:compensation>
+                <payroll:base-salary currency="USD">95000</payroll:base-salary>
+                <payroll:bonus-eligible>true</payroll:bonus-eligible>
+                <payroll:stock-options>2000</payroll:stock-options>
+                <payroll:benefits>
+                    <payroll:health-insurance>Standard</payroll:health-insurance>
+                    <payroll:dental>Standard</payroll:dental>
+                    <payroll:vision>Basic</payroll:vision>
+                    <payroll:retirement-plan>401k</payroll:retirement-plan>
+                </payroll:benefits>
+            </payroll:compensation>
+            <performance>
+                <last-review-date>2023-11-30</last-review-date>
+                <rating>Meets Expectations</rating>
+                <goals-met>3</goals-met>
+                <goals-total>4</goals-total>
+            </performance>
+        </employee>
+        
+        <employee id="EMP003" status="active" hire-date="2021-08-01">
+            <personal-info>
+                <first-name>Michael</first-name>
+                <last-name>Chen</last-name>
+                <date-of-birth>1992-12-05</date-of-birth>
+                <gender>M</gender>
+                <ssn encrypted="true">XXX-XX-9012</ssn>
+            </personal-info>
+            <contact:contact-info>
+                <contact:email primary="true">michael.chen@company.com</contact:email>
+                <contact:phone type="mobile">+1-555-0301</contact:phone>
+                <contact:address type="home">
+                    <contact:street>789 Pine Street</contact:street>
+                    <contact:city>San Jose</contact:city>
+                    <contact:state>CA</contact:state>
+                    <contact:zip>95110</contact:zip>
+                    <contact:country>USA</contact:country>
+                </contact:address>
+            </contact:contact-info>
+            <job-info>
+                <department-id>RND</department-id>
+                <title>Data Scientist</title>
+                <level>L3</level>
+                <manager-id>EMP025</manager-id>
+                <location>San Francisco, CA</location>
+                <work-type>Full-time</work-type>
+                <remote-eligible>true</remote-eligible>
+            </job-info>
+            <payroll:compensation>
+                <payroll:base-salary currency="USD">110000</payroll:base-salary>
+                <payroll:bonus-eligible>true</payroll:bonus-eligible>
+                <payroll:stock-options>3000</payroll:stock-options>
+                <payroll:benefits>
+                    <payroll:health-insurance>Premium</payroll:health-insurance>
+                    <payroll:dental>Premium</payroll:dental>
+                    <payroll:vision>Standard</payroll:vision>
+                    <payroll:retirement-plan>401k</payroll:retirement-plan>
+                </payroll:benefits>
+            </payroll:compensation>
+            <performance>
+                <last-review-date>2024-01-10</last-review-date>
+                <rating>Exceeds Expectations</rating>
+                <goals-met>5</goals-met>
+                <goals-total>5</goals-total>
+            </performance>
+        </employee>
+        
+        <!-- Manager example -->
+        <employee id="EMP015" status="active" hire-date="2018-01-15">
+            <personal-info>
+                <first-name>Lisa</first-name>
+                <last-name>Anderson</last-name>
+                <date-of-birth>1982-09-18</date-of-birth>
+                <gender>F</gender>
+                <ssn encrypted="true">XXX-XX-3456</ssn>
+            </personal-info>
+            <contact:contact-info>
+                <contact:email primary="true">lisa.anderson@company.com</contact:email>
+                <contact:phone type="mobile">+1-555-1501</contact:phone>
+                <contact:phone type="work">+1-555-1502</contact:phone>
+                <contact:address type="home">
+                    <contact:street>321 Elm Drive</contact:street>
+                    <contact:city>Mountain View</contact:city>
+                    <contact:state>CA</contact:state>
+                    <contact:zip>94041</contact:zip>
+                    <contact:country>USA</contact:country>
+                </contact:address>
+            </contact:contact-info>
+            <job-info>
+                <department-id>IT</department-id>
+                <title>Engineering Manager</title>
+                <level>L6</level>
+                <manager-id>EMP001</manager-id>
+                <location>San Francisco, CA</location>
+                <work-type>Full-time</work-type>
+                <remote-eligible>false</remote-eligible>
+                <direct-reports>
+                    <report>EMP001</report>
+                    <report>EMP008</report>
+                    <report>EMP012</report>
+                    <report>EMP018</report>
+                </direct-reports>
+            </job-info>
+            <payroll:compensation>
+                <payroll:base-salary currency="USD">155000</payroll:base-salary>
+                <payroll:bonus-eligible>true</payroll:bonus-eligible>
+                <payroll:stock-options>8000</payroll:stock-options>
+                <payroll:benefits>
+                    <payroll:health-insurance>Executive</payroll:health-insurance>
+                    <payroll:dental>Premium</payroll:dental>
+                    <payroll:vision>Premium</payroll:vision>
+                    <payroll:retirement-plan>401k</payroll:retirement-plan>
+                    <payroll:executive-benefits>
+                        <payroll:company-car>true</payroll:company-car>
+                        <payroll:executive-health>true</payroll:executive-health>
+                    </payroll:executive-benefits>
+                </payroll:benefits>
+            </payroll:compensation>
+            <performance>
+                <last-review-date>2023-12-20</last-review-date>
+                <rating>Outstanding</rating>
+                <goals-met>6</goals-met>
+                <goals-total>6</goals-total>
+                <leadership-score>9.2</leadership-score>
+            </performance>
+        </employee>
+        
+        <!-- Inactive employee example -->
+        <employee id="EMP999" status="inactive" hire-date="2017-05-10" termination-date="2023-11-30">
+            <personal-info>
+                <first-name>Robert</first-name>
+                <last-name>Wilson</last-name>
+                <date-of-birth>1980-04-25</date-of-birth>
+                <gender>M</gender>
+                <ssn encrypted="true">XXX-XX-7890</ssn>
+            </personal-info>
+            <contact:contact-info>
+                <contact:email primary="false">robert.wilson@company.com</contact:email>
+                <contact:phone type="mobile">+1-555-9991</contact:phone>
+                <contact:address type="home">
+                    <contact:street>999 Last Lane</contact:street>
+                    <contact:city>Santa Clara</contact:city>
+                    <contact:state>CA</contact:state>
+                    <contact:zip>95050</contact:zip>
+                    <contact:country>USA</contact:country>
+                </contact:address>
+            </contact:contact-info>
+            <job-info>
+                <department-id>OPS</department-id>
+                <title>Operations Specialist</title>
+                <level>L2</level>
+                <manager-id>EMP030</manager-id>
+                <location>San Francisco, CA</location>
+                <work-type>Full-time</work-type>
+                <termination-reason>Voluntary Resignation</termination-reason>
+                <eligible-for-rehire>true</eligible-for-rehire>
+            </job-info>
+            <payroll:compensation>
+                <payroll:final-salary currency="USD">65000</payroll:final-salary>
+                <payroll:severance-paid>false</payroll:severance-paid>
+                <payroll:cobra-eligible>true</payroll:cobra-eligible>
+            </payroll:compensation>
+            <performance>
+                <last-review-date>2023-05-15</last-review-date>
+                <rating>Meets Expectations</rating>
+                <goals-met>3</goals-met>
+                <goals-total>4</goals-total>
+            </performance>
+        </employee>
+        
+        <!-- This would continue for 1000+ employees in a real dataset -->
+        <!-- Additional employees would follow similar structure -->
+        <!-- For demonstration, we're showing key patterns and variations -->
+        
+    </employees>
+    
+    <!-- Summary Statistics -->
+    <statistics>
+        <by-department>
+            <dept-stat department="IT" count="150" avg-salary="115000"/>
+            <dept-stat department="HR" count="25" avg-salary="70000"/>
+            <dept-stat department="FIN" count="40" avg-salary="85000"/>
+            <dept-stat department="MKT" count="60" avg-salary="80000"/>
+            <dept-stat department="OPS" count="200" avg-salary="65000"/>
+            <dept-stat department="RND" count="180" avg-salary="125000"/>
+            <dept-stat department="SUP" count="80" avg-salary="55000"/>
+            <dept-stat department="LEG" count="15" avg-salary="150000"/>
+        </by-department>
+        
+        <by-level>
+            <level-stat level="L1" count="100" avg-salary="50000"/>
+            <level-stat level="L2" count="250" avg-salary="65000"/>
+            <level-stat level="L3" count="300" avg-salary="85000"/>
+            <level-stat level="L4" count="200" avg-salary="105000"/>
+            <level-stat level="L5" count="80" avg-salary="125000"/>
+            <level-stat level="L6" count="15" avg-salary="155000"/>
+            <level-stat level="L7" count="5" avg-salary="200000"/>
+        </by-level>
+        
+        <tenure-analysis>
+            <tenure-group years="0-1" count="120"/>
+            <tenure-group years="1-3" count="280"/>
+            <tenure-group years="3-5" count="350"/>
+            <tenure-group years="5-10" count="180"/>
+            <tenure-group years="10+" count="70"/>
+        </tenure-analysis>
+    </statistics>
+    
+</employee-database>

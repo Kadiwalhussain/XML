@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Simple book collection example for XML basics -->
+<library>
+    <info>
+        <name>Central Library</name>
+        <location>Main Street</location>
+        <established>1995</established>
+    </info>
+    
+    <books>
+        <book id="B001" format="paperback" available="true">
+            <title>XML Processing Guide</title>
+            <author>John Smith</author>
+            <isbn>978-0123456789</isbn>
+            <price currency="USD">29.99</price>
+            <category>Technical</category>
+            <pages>450</pages>
+            <publication-date>2024-01-15</publication-date>
+            <description>
+                A comprehensive guide to XML processing techniques, 
+                covering parsing, validation, and transformation.
+            </description>
+        </book>
+        
+        <book id="B002" format="ebook" available="true">
+            <title>Advanced XML Techniques</title>
+            <author>Jane Doe</author>
+            <author>Bob Wilson</author>
+            <isbn>978-0987654321</isbn>
+            <price currency="USD">19.99</price>
+            <category>Technical</category>
+            <pages>320</pages>
+            <publication-date>2024-02-01</publication-date>
+            <description>
+                Explore advanced XML concepts including namespaces, 
+                schemas, and enterprise integration patterns.
+            </description>
+        </book>
+        
+        <book id="B003" format="hardcover" available="false">
+            <title>Web Development with XML</title>
+            <author>Alice Johnson</author>
+            <isbn>978-0456789012</isbn>
+            <price currency="USD">45.00</price>
+            <category>Web Development</category>
+            <pages>600</pages>
+            <publication-date>2023-11-20</publication-date>
+            <description>
+                Learn how to use XML in web development, including 
+                AJAX, REST APIs, and data exchange formats.
+            </description>
+        </book>
+    </books>
+</library>

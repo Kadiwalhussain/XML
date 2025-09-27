@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- E-commerce product catalog with attributes and namespaces -->
+<catalog xmlns="http://example.com/products"
+         xmlns:pricing="http://example.com/pricing"
+         xmlns:inventory="http://example.com/inventory"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    
+    <metadata>
+        <generated>2024-01-15T10:30:00Z</generated>
+        <version>2.1</version>
+        <total-products>5</total-products>
+    </metadata>
+    
+    <categories>
+        <category id="electronics" name="Electronics"/>
+        <category id="books" name="Books"/>
+        <category id="clothing" name="Clothing"/>
+    </categories>
+    
+    <products>
+        <product id="P001" category="electronics" featured="true">
+            <name>Wireless Headphones</name>
+            <description>High-quality wireless headphones with noise cancellation</description>
+            <pricing:price currency="USD" tax-included="false">89.99</pricing:price>
+            <pricing:discount-price currency="USD">79.99</pricing:discount-price>
+            <inventory:stock-quantity>25</inventory:stock-quantity>
+            <inventory:warehouse-location>A-12-B</inventory:warehouse-location>
+            <specifications>
+                <weight unit="grams">250</weight>
+                <dimensions unit="cm" length="18" width="15" height="8"/>
+                <battery-life unit="hours">20</battery-life>
+                <connectivity>Bluetooth 5.0, USB-C</connectivity>
+            </specifications>
+            <images>
+                <image type="primary">headphones-main.jpg</image>
+                <image type="thumbnail">headphones-thumb.jpg</image>
+            </images>
+        </product>
+        
+        <product id="P002" category="electronics" featured="false">
+            <name>Smartphone</name>
+            <description>Latest model smartphone with advanced camera</description>
+            <pricing:price currency="USD" tax-included="false">699.00</pricing:price>
+            <inventory:stock-quantity>12</inventory:stock-quantity>
+            <inventory:warehouse-location>A-15-C</inventory:warehouse-location>
+            <specifications>
+                <weight unit="grams">180</weight>
+                <dimensions unit="mm" length="150" width="75" height="8"/>
+                <screen-size unit="inches">6.1</screen-size>
+                <storage unit="GB">128</storage>
+                <camera megapixels="48">Triple camera system</camera>
+            </specifications>
+            <images>
+                <image type="primary">smartphone-main.jpg</image>
+                <image type="gallery">smartphone-back.jpg</image>
+                <image type="gallery">smartphone-side.jpg</image>
+            </images>
+        </product>
+        
+        <product id="P003" category="books" featured="false">
+            <name>Programming in Python</name>
+            <description>Complete guide to Python programming for beginners</description>
+            <pricing:price currency="USD" tax-included="true">39.95</pricing:price>
+            <inventory:stock-quantity>50</inventory:stock-quantity>
+            <inventory:warehouse-location>B-05-A</inventory:warehouse-location>
+            <specifications>
+                <pages>480</pages>
+                <format>Paperback</format>
+                <isbn>978-0123456789</isbn>
+                <author>Sarah Johnson</author>
+                <publisher>Tech Books Inc.</publisher>
+                <publication-date>2023-08-15</publication-date>
+            </specifications>
+            <images>
+                <image type="primary">python-book-cover.jpg</image>
+            </images>
+        </product>
+        
+        <product id="P004" category="clothing" featured="true">
+            <name>Cotton T-Shirt</name>
+            <description>Comfortable 100% cotton t-shirt in various colors</description>
+            <pricing:price currency="USD" tax-included="true">24.99</pricing:price>
+            <inventory:stock-quantity>100</inventory:stock-quantity>
+            <inventory:warehouse-location>C-08-D</inventory:warehouse-location>
+            <specifications>
+                <material>100% Cotton</material>
+                <care-instructions>Machine wash cold, tumble dry low</care-instructions>
+                <sizes>
+                    <size stock="20">S</size>
+                    <size stock="35">M</size>
+                    <size stock="30">L</size>
+                    <size stock="15">XL</size>
+                </sizes>
+                <colors>
+                    <color stock="25">White</color>
+                    <color stock="25">Black</color>
+                    <color stock="20">Navy</color>
+                    <color stock="20">Gray</color>
+                    <color stock="10">Red</color>
+                </colors>
+            </specifications>
+            <images>
+                <image type="primary">tshirt-white.jpg</image>
+                <image type="gallery">tshirt-black.jpg</image>
+                <image type="gallery">tshirt-navy.jpg</image>
+            </images>
+        </product>
+        
+        <product id="P005" category="electronics" featured="false">
+            <name>Laptop Stand</name>
+            <description>Adjustable aluminum laptop stand for ergonomic computing</description>
+            <pricing:price currency="USD" tax-included="false">45.00</pricing:price>
+            <pricing:discount-price currency="USD">39.99</pricing:discount-price>
+            <inventory:stock-quantity>75</inventory:stock-quantity>
+            <inventory:warehouse-location>A-20-F</inventory:warehouse-location>
+            <specifications>
+                <material>Aluminum alloy</material>
+                <weight unit="grams">800</weight>
+                <dimensions unit="cm" length="28" width="22" height="15"/>
+                <adjustable-height>Yes</adjustable-height>
+                <compatible-sizes>11-17 inches</compatible-sizes>
+                <color>Silver</color>
+            </specifications>
+            <images>
+                <image type="primary">laptop-stand-main.jpg</image>
+                <image type="gallery">laptop-stand-angle.jpg</image>
+            </images>
+        </product>
+    </products>
+    
+</catalog>

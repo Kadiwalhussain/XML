@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Application configuration file with complex nested structure -->
+<application-config xmlns="http://example.com/config"
+                   xmlns:db="http://example.com/database"
+                   xmlns:sec="http://example.com/security"
+                   xmlns:log="http://example.com/logging">
+    
+    <app-info>
+        <name>E-Commerce Portal</name>
+        <version>3.2.1</version>
+        <environment>production</environment>
+        <deployed-date>2024-01-10T14:30:00Z</deployed-date>
+    </app-info>
+    
+    <!-- Database Configuration -->
+    <db:database-config>
+        <db:connections>
+            <db:connection name="primary" type="postgresql">
+                <db:host>db-primary.example.com</db:host>
+                <db:port>5432</db:port>
+                <db:database>ecommerce_prod</db:database>
+                <db:username>app_user</db:username>
+                <db:password encrypted="true">#{ENCRYPTED_PASSWORD}</db:password>
+                <db:pool-settings>
+                    <db:min-connections>5</db:min-connections>
+                    <db:max-connections>20</db:max-connections>
+                    <db:timeout seconds="30"/>
+                </db:pool-settings>
+            </db:connection>
+            
+            <db:connection name="readonly" type="postgresql">
+                <db:host>db-readonly.example.com</db:host>
+                <db:port>5432</db:port>
+                <db:database>ecommerce_prod</db:database>
+                <db:username>readonly_user</db:username>
+                <db:password encrypted="true">#{ENCRYPTED_READONLY_PASSWORD}</db:password>
+                <db:pool-settings>
+                    <db:min-connections>2</db:min-connections>
+                    <db:max-connections>10</db:max-connections>
+                    <db:timeout seconds="15"/>
+                </db:pool-settings>
+            </db:connection>
+        </db:connections>
+    </db:database-config>
+    
+    <!-- Security Configuration -->
+    <sec:security-config>
+        <sec:authentication>
+            <sec:jwt-settings>
+                <sec:secret-key encrypted="true">#{JWT_SECRET}</sec:secret-key>
+                <sec:expiration hours="24"/>
+                <sec:issuer>ecommerce-portal</sec:issuer>
+                <sec:algorithm>HS256</sec:algorithm>
+            </sec:jwt-settings>
+            
+            <sec:oauth-providers>
+                <sec:provider name="google" enabled="true">
+                    <sec:client-id>#{GOOGLE_CLIENT_ID}</sec:client-id>
+                    <sec:client-secret encrypted="true">#{GOOGLE_CLIENT_SECRET}</sec:client-secret>
+                    <sec:redirect-uri>https://example.com/auth/google/callback</sec:redirect-uri>
+                </sec:provider>
+                
+                <sec:provider name="facebook" enabled="false">
+                    <sec:client-id>#{FACEBOOK_CLIENT_ID}</sec:client-id>
+                    <sec:client-secret encrypted="true">#{FACEBOOK_CLIENT_SECRET}</sec:client-secret>
+                    <sec:redirect-uri>https://example.com/auth/facebook/callback</sec:redirect-uri>
+                </sec:provider>
+            </sec:oauth-providers>
+        </sec:authentication>
+        
+        <sec:authorization>
+            <sec:roles>
+                <sec:role name="admin" permissions="read,write,delete"/>
+                <sec:role name="manager" permissions="read,write"/>
+                <sec:role name="user" permissions="read"/>
+                <sec:role name="guest" permissions="read:public"/>
+            </sec:roles>
+            
+            <sec:rate-limiting enabled="true">
+                <sec:global-limit requests="1000" window="hour"/>
+                <sec:authenticated-limit requests="5000" window="hour"/>
+                <sec:api-limit requests="10000" window="hour"/>
+            </sec:rate-limiting>
+        </sec:authorization>
+        
+        <sec:encryption>
+            <sec:algorithm>AES-256-GCM</sec:algorithm>
+            <sec:key-rotation enabled="true" interval="30" unit="days"/>
+        </sec:encryption>
+    </sec:security-config>
+    
+    <!-- Logging Configuration -->
+    <log:logging-config>
+        <log:level>INFO</log:level>
+        <log:format>json</log:format>
+        
+        <log:appenders>
+            <log:appender name="console" type="console">
+                <log:pattern>[%timestamp] %level %logger: %message</log:pattern>
+                <log:color-enabled>true</log:color-enabled>
+            </log:appender>
+            
+            <log:appender name="file" type="file">
+                <log:file-path>/var/log/ecommerce/app.log</log:file-path>
+                <log:max-size>100MB</log:max-size>
+                <log:max-files>10</log:max-files>
+                <log:compression>gzip</log:compression>
+            </log:appender>
+            
+            <log:appender name="elasticsearch" type="elasticsearch">
+                <log:host>elasticsearch.example.com</log:host>
+                <log:port>9200</log:port>
+                <log:index>ecommerce-logs</log:index>
+                <log:batch-size>100</log:batch-size>
+            </log:appender>
+        </log:appenders>
+        
+        <log:loggers>
+            <log:logger name="com.example.ecommerce" level="DEBUG"/>
+            <log:logger name="com.example.ecommerce.security" level="WARN"/>
+            <log:logger name="org.springframework" level="INFO"/>
+            <log:logger name="org.hibernate" level="WARN"/>
+        </log:loggers>
+    </log:logging-config>
+    
+    <!-- Application Settings -->
+    <app-settings>
+        <server>
+            <port>8080</port>
+            <context-path>/api</context-path>
+            <max-threads>200</max-threads>
+            <session-timeout minutes="30"/>
+        </server>
+        
+        <cache>
+            <provider>redis</provider>
+            <host>redis.example.com</host>
+            <port>6379</port>
+            <ttl minutes="15"/>
+            <max-memory>256MB</max-memory>
+        </cache>
+        
+        <email>
+            <smtp-server>smtp.example.com</smtp-server>
+            <port>587</port>
+            <username>noreply@example.com</username>
+            <password encrypted="true">#{EMAIL_PASSWORD}</password>
+            <use-tls>true</use-tls>
+            <from-address>noreply@example.com</from-address>
+        </email>
+        
+        <storage>
+            <provider>aws-s3</provider>
+            <bucket>ecommerce-media</bucket>
+            <region>us-west-2</region>
+            <access-key>#{AWS_ACCESS_KEY}</access-key>
+            <secret-key encrypted="true">#{AWS_SECRET_KEY}</secret-key>
+            <cdn-url>https://cdn.example.com</cdn-url>
+        </storage>
+        
+        <features>
+            <feature name="product-recommendations" enabled="true"/>
+            <feature name="wishlist" enabled="true"/>
+            <feature name="reviews" enabled="true"/>
+            <feature name="chat-support" enabled="false"/>
+            <feature name="loyalty-program" enabled="true"/>
+        </features>
+        
+        <monitoring>
+            <health-check-interval seconds="30"/>
+            <metrics-enabled>true</metrics-enabled>
+            <tracing-enabled>true</tracing-enabled>
+            <sampling-rate>0.1</sampling-rate>
+            <alerts>
+                <alert type="error-rate" threshold="5" window="5min"/>
+                <alert type="response-time" threshold="1000ms" window="10min"/>
+                <alert type="memory-usage" threshold="80%" window="15min"/>
+            </alerts>
+        </monitoring>
+    </app-settings>
+    
+</application-config>
